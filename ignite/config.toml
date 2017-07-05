@@ -1,0 +1,16 @@
+[app]
+address = ":5000"
+
+[mysql]
+host = "mysql:3306"
+dbname = "ignite"
+user = "root"
+password = "123456"
+
+[ss]
+image = "registry.xiaozhou.net/ssmu:latest"
+
+[host]
+address = "localhost"
+from = 4000
+to = 6000

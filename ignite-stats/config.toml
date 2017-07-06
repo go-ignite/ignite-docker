@@ -1,0 +1,5 @@
+[mysql]
+host = "mysql:3306"
+dbname = "ignite"
+user = "root"
+password = "123456"

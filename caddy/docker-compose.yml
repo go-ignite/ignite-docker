@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  caddy:
+    container_name: caddy
+    image: abiosoft/caddy
+    volumes:
+      - "./certs:/etc/caddycerts"
+      - "./Caddyfile:/etc/Caddyfile"
+    ports:
+      - 80:80
+      - 443:443
+    network_mode: "host"
+    restart: always
+    environment:
+      CADDYPATH: /etc/caddycerts

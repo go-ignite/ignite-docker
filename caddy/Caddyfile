@@ -1,0 +1,13 @@
+ignite.xxxx.com {
+    tls your@email.com
+    proxy / localhost:5000 {
+        transparent
+    }
+}
+
+ignite-admin.xxxx.com {
+    tls your@email.com
+    proxy / localhost:8000 {
+        transparent
+    }
+}

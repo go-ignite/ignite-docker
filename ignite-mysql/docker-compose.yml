@@ -2,15 +2,6 @@ version: '3'
 
 services:
 
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    container_name: nginx-proxy
-    ports:
-      - "80:80"
-    volumes:
-      - "/var/run/docker.sock:/tmp/docker.sock:ro"
-    restart: always
-
   mysql:
     container_name: mysql
     image: mysql:5.7
@@ -19,29 +10,37 @@ services:
       - "./mysql/conf:/etc/mysql/conf.d"
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ignite
 
   ignite:
     container_name: ignite
-    image: ignite
+    image: goignite/ignite
     volumes:
-      - "./ignite/config.toml:/ignite/config.toml"
+      - "./data:/root/ignite/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
-      - VIRTUAL_HOST=change.me
+      - HOST_ADDRESS=server-ip-address
+      - DB_DRIVER=${DB_DRIVER}
+      - DB_CONNECT=${DB_CONNECT}
+      #- HOST_FROM=5001
+      #- HOST_TO=6000
     ports:
       - "5000:5000"
     restart: always
 
   ignite-admin:
     container_name: ignite-admin
-    image: ignite-admin
+    image: goignite/ignite-admin
     volumes:
-      - "./ignite-admin/config.toml:/ignite-admin/config.toml"
+      - "./data:/root/ignite/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
-      - VIRTUAL_HOST=change.me
+      - DB_DRIVER=${DB_DRIVER}
+      - DB_CONNECT=${DB_CONNECT}
+      #- AUTH_USERNAME=admin
+      #- AUTH_PASSWORD=123
+      #- AUTH_SECRET=123
     ports:
       - "8000:8000"
     restart: always

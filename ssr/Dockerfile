@@ -9,4 +9,4 @@ EXPOSE 3389/tcp
 EXPOSE 3389/udp
 
 WORKDIR /usr/bin/
-ENTRYPOINt ["ssserver","-p","3389"]
+ENTRYPOINT ["ssserver","-p","3389"]

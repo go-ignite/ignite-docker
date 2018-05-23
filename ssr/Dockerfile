@@ -1,5 +1,5 @@
 FROM alpine
-LABEL maintainer="go-ignite"
+LABEL maintainer="go-ignite" version="3.1.2" org.label-schema.url="https://github.com/go-ignite"
 
 RUN apk --update add --no-cache libsodium py-pip \
     && pip --no-cache-dir install https://github.com/shadowsocksr-backup/shadowsocksr/archive/3.1.2.zip \

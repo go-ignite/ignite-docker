@@ -4,9 +4,9 @@
 #
 
 FROM alpine
-LABEL maintainer="go-ignite" version="3.1.2" org.label-schema.url="https://github.com/go-ignite"
+LABEL maintainer="go-ignite" version="3.3.0" org.label-schema.url="https://github.com/go-ignite"
 
-ARG SS_VER=3.1.2
+ARG SS_VER=3.3.0
 ARG SS_URL=https://github.com/shadowsocks/shadowsocks-libev/releases/download/v$SS_VER/shadowsocks-libev-$SS_VER.tar.gz
 
 RUN set -ex && \
